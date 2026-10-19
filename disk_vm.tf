@@ -1,7 +1,7 @@
 resource "yandex_compute_disk" "volumes" {
   count = 3
 
-  name = "disk-${count.index}"
+  name = "disk-${terraform.workspace}-${count.index}"
   type = "network-hdd"
   size = 1
   zone = var.default_zone
@@ -9,7 +9,7 @@ resource "yandex_compute_disk" "volumes" {
 
 resource "yandex_compute_instance" "storage" {
   depends_on  = [yandex_compute_instance.vm_for_each]
-  name        = "storage"
+  name        = "storage-${terraform.workspace}"
   platform_id = "standard-v3"
 
   resources {

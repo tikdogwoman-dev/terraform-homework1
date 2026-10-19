@@ -1,6 +1,6 @@
 resource "yandex_compute_instance" "platform" {
   count       = 2
-  name        = "web-${count.index + 1}"
+   name        = "web-${terraform.workspace}-${count.index + 1}"
   platform_id = "standard-v3"
 
   resources {

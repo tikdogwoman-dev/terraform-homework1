@@ -5,7 +5,7 @@ resource "yandex_compute_instance" "vm_for_each" {
     vm.vm_name => vm
   }
 
-  name = each.value.vm_name
+  name = "${each.value.vm_name}-${terraform.workspace}"
 
   resources {
     cores         = each.value.cpu

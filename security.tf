@@ -52,7 +52,7 @@ variable "security_group_egress" {
 }
 
 resource "yandex_vpc_security_group" "example" {
-  name       = "example_dynamic"
+  name       = "sg-${terraform.workspace}"
   network_id = data.yandex_vpc_network.develop.id
   folder_id  = var.folder_id
 
